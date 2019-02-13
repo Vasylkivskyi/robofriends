@@ -3,6 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry';
 
 // In order to use state we need to use 'class' key word instead of 'const', also we have to use 'render' method!.
 class App extends Component{
@@ -53,7 +54,9 @@ class App extends Component{
           {/* We create component inside another component to make list of robots scrollable on the page. */}
           <Scroll>
             {/* Passing all filtered robots array on page. */}
-            <CardList robots={filteredRobots}/>
+            <ErrorBoundry>
+              <CardList robots={filteredRobots}/>
+              </ErrorBoundry>
           </Scroll>
         </div>
       )
